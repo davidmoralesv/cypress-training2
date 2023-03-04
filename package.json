@@ -1,0 +1,25 @@
+{
+  "name": "cypress-training2",
+  "description": "This is a workshop about Cypress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidmoralesv/cypress-training2.git"
+  },
+  "keywords": [
+    "ui-testing",
+    "dojo",
+    "practice",
+    "cypress"
+  ],
+  "author": "@davidmoralv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidmoralesv/cypress-training2/issues"
+  },
+  "homepage": "https://github.com/davidmoralesv/cypress-training2#readme"
+}
