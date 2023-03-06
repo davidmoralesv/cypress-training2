@@ -6,9 +6,6 @@ class OverViewPage {
   private readonly SUMMARY_TAX_LABEL = 'div.summary_tax_label'
   private readonly SUMMARY_TOTAL_LABEL = 'div.summary_total_label'
   private readonly FINISH_BUTTON = '[data-test="finish"]'
-  private readonly subtotal = 0.0
-  private readonly tax = 0.0
-  private readonly total = 0.0
 
   public validateOverView (itemName: string, itemPrice: string, tax: number): void {
     cy.get(this.CART_QUANTITY).should('have.text', 1)
@@ -21,12 +18,14 @@ class OverViewPage {
   public validateComputedTotalPay (): void {
     cy.get(this.SUMMARY_SUBTOTAL_LABEL)
       .invoke('text')
+      .as('subtotal')
       .then(function (value) {
         this.subtotal = parseFloat(value.replace('Item total: $', ''))
       })
 
     cy.get(this.SUMMARY_TAX_LABEL)
       .invoke('text')
+      .as('tax')
       .then(function (value) {
         this.tax = parseFloat(value.replace('Tax: $', ''))
       })
@@ -35,8 +34,8 @@ class OverViewPage {
       .invoke('text')
       .then(function (value) {
         const totalInScreen = parseFloat(value.replace('Total: $', ''))
-        this.total = parseFloat(this.subtotal) + parseFloat(this.tax)
-        cy.wrap(totalInScreen).should('equal', this.total)
+        const total = parseFloat(this.subtotal) + parseFloat(this.tax)
+        cy.wrap(totalInScreen).should('equal', total)
       })
 
     cy.get(this.FINISH_BUTTON).click()
