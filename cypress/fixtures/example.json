@@ -1,0 +1,12 @@
+{
+  "URL": "https://www.saucedemo.com/",
+  "PRODUCTS_TITLE": "Products",
+  "ITEM_NAME": "Sauce Labs Bolt T-Shirt",
+  "ITEM_PRICE": "$15.99",
+  "FIRST_NAME": "Cypress",
+  "LAST_NAME": "Workshop",
+  "ZIP_POSTAL_CODE": "00000",
+  "TAX": 1.28,
+  "CHECKOUT_COMPLETE_MESSAGE":"Checkout: Complete!",
+  "THANK_YOU_FOR_YOU_ORDER_MESSAGE":"Thank you for your order!"
+}
