@@ -34,7 +34,6 @@ class OverViewPage {
     cy.get(this.SUMMARY_TOTAL_LABEL)
       .invoke('text')
       .then(function (value) {
-        debugger // eslint-disable-line no-debugger
         const totalInScreen = parseFloat(value.replace('Total: $', ''))
         this.total = parseFloat(this.subtotal) + parseFloat(this.tax)
         cy.wrap(totalInScreen).should('equal', this.total)
