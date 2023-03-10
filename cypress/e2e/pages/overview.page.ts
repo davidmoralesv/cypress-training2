@@ -20,7 +20,6 @@ class OverViewPage {
       .invoke('text')
       .as('subtotal')
       .then(function (value) {
-        debugger // eslint-disable-line no-debugger
         this.subtotal = parseFloat(value.replace('Item total: $', ''))
       })
 
