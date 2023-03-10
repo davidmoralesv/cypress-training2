@@ -8,5 +8,6 @@
   "ZIP_POSTAL_CODE": "00000",
   "TAX": 1.28,
   "CHECKOUT_COMPLETE_MESSAGE":"Checkout: Complete!",
-  "THANK_YOU_FOR_YOU_ORDER_MESSAGE":"Thank you for your order!"
+  "THANK_YOU_FOR_YOU_ORDER_MESSAGE":"Thank you for your order!",
+  "USERNAME_IS_REQUIRED_MESSAGE": "Epic sadface: Username is required"
 }

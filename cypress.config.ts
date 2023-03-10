@@ -7,6 +7,7 @@ export default defineConfig({
   screenshotOnRunFailure: false,
   chromeWebSecurity: false,
   watchForFileChanges:false,
+  
   e2e: {
     setupNodeEvents(on, config) {
       // modify config values examples

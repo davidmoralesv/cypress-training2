@@ -20,6 +20,7 @@ class OverViewPage {
       .invoke('text')
       .as('subtotal')
       .then(function (value) {
+        debugger // eslint-disable-line no-debugger
         this.subtotal = parseFloat(value.replace('Item total: $', ''))
       })
 
@@ -37,7 +38,9 @@ class OverViewPage {
         const total = parseFloat(this.subtotal) + parseFloat(this.tax)
         cy.wrap(totalInScreen).should('equal', total)
       })
+  }
 
+  public clickOnFinishButton (): void {
     cy.get(this.FINISH_BUTTON).click()
   }
 }
