@@ -37,7 +37,9 @@ class OverViewPage {
         const total = parseFloat(this.subtotal) + parseFloat(this.tax)
         cy.wrap(totalInScreen).should('equal', total)
       })
+  }
 
+  public clickOnFinishButton (): void {
     cy.get(this.FINISH_BUTTON).click()
   }
 }
