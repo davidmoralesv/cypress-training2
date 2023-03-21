@@ -9,6 +9,17 @@ export default defineConfig({
   watchForFileChanges: false,
 
   e2e: {
+    reporter: 'cypress-multi-reporters',
+    reporterOptions: {
+      reporterEnabled: 'mochawesome',
+      mochawesomeReporterOptions: {
+        reportDir: 'cypress/reports/mocha',
+        quiet: true,
+        overwrite: false,
+        html: false,
+        json: true,
+      },
+    },
     setupNodeEvents(on, config) {
       // modify config values examples
       // config.defaultCommandTimeout = 10000
