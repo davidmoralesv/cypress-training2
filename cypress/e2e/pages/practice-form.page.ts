@@ -14,74 +14,50 @@ class PracticeFormPage {
   private readonly SUBMIT = 'button#submit'
   private readonly LABEL_SUCCESFUL_MODAL = 'div.modal-body tbody td'
 
-  private readonly personalInformation = {
-    name: 'Holmes',
-    lastName: 'Salazar',
-    email: 'test@email.com',
-    gender: 'Male',
-    dateOfBirth: ' July 2016',
-    mobileNumber: '3656589156',
-    subjects: 'Computer Science',
-    hobbies: ['Music', 'Reading'],
-    currentAddress: 'Av siempreViva # 123',
-    state: 'Uttar Pradesh',
-    city: 'Agra',
-    successful_message: 'Thanks for submitting the form',
-    studentNameLabel: 'Student Name',
-    studentEmailLabel: 'Student Email',
-    genderLabel: 'Gender',
-    mobileLabel: 'Mobile',
-    dateOfBirthLabel: 'Date of Birth',
-    subjectsLabel: 'Subjects',
-    hobbiesLabel: 'Hobbies',
-    addressLabel: 'Address',
-    stateAndCityLabel: 'State and City'
-  }
-
-  public fillForm (): void {
-    cy.get(this.FIRST_NAME).type(this.personalInformation.name)
-    cy.get(this.LAST_NAME).type(this.personalInformation.lastName)
-    cy.get(this.EMAIL).type(this.personalInformation.email)
-    cy.get(this.GENDER).check(this.personalInformation.gender, { force: true }) // eslint-disable-line
-    cy.get(this.MOBILE).type(this.personalInformation.mobileNumber)
-    this.fillDate()
-    cy.get(this.SUBJECTS).type(this.personalInformation.subjects + '{enter}')
-    cy.get(this.LABEL).contains(this.personalInformation.hobbies[0]).eq(0).click()
-    cy.get(this.LABEL).contains(this.personalInformation.hobbies[1]).eq(0).click()
-    cy.get(this.CURRENT_ADDRESS).type(this.personalInformation.currentAddress)
-    cy.get(this.STATE).type(this.personalInformation.state + '{enter}')
-    cy.get(this.CITY).type(this.personalInformation.city + '{enter}')
+  public fillForm (personalInformation: any): void {
+    cy.get(this.FIRST_NAME).type(personalInformation.name)
+    cy.get(this.LAST_NAME).type(personalInformation.lastName)
+    cy.get(this.EMAIL).type(personalInformation.email)
+    cy.get(this.GENDER).check(personalInformation.gender, { force: true }) // eslint-disable-line
+    cy.get(this.MOBILE).type(personalInformation.mobileNumber)
+    this.fillDate(personalInformation)
+    cy.get(this.SUBJECTS).type(personalInformation.subjects + '{enter}') // eslint-disable-line
+    cy.get(this.MOBILE).type(personalInformation.mobileNumber)
+    cy.get(this.LABEL).contains(personalInformation.hobbies[0]).eq(0).click()
+    cy.get(this.LABEL).contains(personalInformation.hobbies[1]).eq(0).click()
+    cy.get(this.CURRENT_ADDRESS).type(personalInformation.currentAddress)
+    cy.get(this.STATE).type(personalInformation.state + '{enter}') // eslint-disable-line
+    cy.get(this.CITY).type(personalInformation.city + '{enter}') // eslint-disable-line
     cy.get(this.SUBMIT).click({ force: true }) // eslint-disable-line
   }
 
-  public verifySuccesfulForm (): void {
-    cy.get(this.SUCCESSFUL_MODAL).should('have.text', this.personalInformation.successful_message)
-    this.validateEachLabel(this.personalInformation.studentNameLabel,
-      this.personalInformation.name + ' ' + this.personalInformation.lastName
-    )
-    this.validateEachLabel(this.personalInformation.studentEmailLabel, this.personalInformation.email)
-    this.validateEachLabel(this.personalInformation.genderLabel, this.personalInformation.gender)
-    this.validateEachLabel(this.personalInformation.mobileLabel, this.personalInformation.mobileNumber)
-    this.validateEachLabel(this.personalInformation.subjectsLabel, this.personalInformation.subjects)
-    this.validateEachLabel(this.personalInformation.hobbiesLabel,
-      this.personalInformation.hobbies[0] + ', ' + this.personalInformation.hobbies[1]
-    )
-    this.validateEachLabel(this.personalInformation.addressLabel, this.personalInformation.currentAddress)
-    this.validateEachLabel(this.personalInformation.stateAndCityLabel,
-      this.personalInformation.state + ' ' + this.personalInformation.city
-    )
+  public verifySuccesfulForm (personalInformation: any): void {
+    cy.get(this.SUCCESSFUL_MODAL).should('have.text', personalInformation.successful_message)
+    this.validateEachLabel(personalInformation.studentNameLabel,
+      personalInformation.name + ' ' + personalInformation.lastName) // eslint-disable-line
+
+    this.validateEachLabel(personalInformation.studentEmailLabel, personalInformation.email)
+    this.validateEachLabel(personalInformation.genderLabel, personalInformation.gender)
+    this.validateEachLabel(personalInformation.mobileLabel, personalInformation.mobileNumber)
+    this.validateEachLabel(personalInformation.subjectsLabel, personalInformation.subjects)
+    this.validateEachLabel(personalInformation.hobbiesLabel,
+      personalInformation.hobbies[0] + ', ' + personalInformation.hobbies[1]) // eslint-disable-line
+
+    this.validateEachLabel(personalInformation.addressLabel, personalInformation.currentAddress)
+    this.validateEachLabel(personalInformation.stateAndCityLabel,
+      personalInformation.state + ' ' + personalInformation.city) // eslint-disable-line
   }
 
   private validateEachLabel (label: any, text: any): void {
     cy.get(this.LABEL_SUCCESFUL_MODAL).contains(label).next().should('have.text', text)
   }
 
-  private fillDate (): void {
+  private fillDate (personalInformation: any): void {
     for (let i = 1; i <= 4; i++) {
       cy.get(this.DATE_OF_BIRTHDAY).type('{backspace}')
     }
-    cy.get(this.DATE_OF_BIRTHDAY).type(this.personalInformation.dateOfBirth)
-    cy.get(this.DATE_OF_BIRTHDAY).type(this.personalInformation.dateOfBirth).type('{enter}')
+    cy.get(this.DATE_OF_BIRTHDAY).type(personalInformation.dateOfBirth)
+    cy.get(this.DATE_OF_BIRTHDAY).type(personalInformation.dateOfBirth).type('{enter}')
   }
 }
 
