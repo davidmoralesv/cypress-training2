@@ -21,31 +21,31 @@ class PracticeFormPage {
     cy.get(this.GENDER).check(personalInformation.gender, { force: true }) // eslint-disable-line
     cy.get(this.MOBILE).type(personalInformation.mobileNumber)
     this.fillDate(personalInformation)
-    cy.get(this.SUBJECTS).type(personalInformation.subjects + '{enter}') // eslint-disable-line
+    cy.get(this.SUBJECTS).type([personalInformation.subjects, '{enter}'].join(''))
     cy.get(this.MOBILE).type(personalInformation.mobileNumber)
     cy.get(this.LABEL).contains(personalInformation.hobbies[0]).eq(0).click()
     cy.get(this.LABEL).contains(personalInformation.hobbies[1]).eq(0).click()
     cy.get(this.CURRENT_ADDRESS).type(personalInformation.currentAddress)
-    cy.get(this.STATE).type(personalInformation.state + '{enter}') // eslint-disable-line
-    cy.get(this.CITY).type(personalInformation.city + '{enter}') // eslint-disable-line
-    cy.get(this.SUBMIT).click({ force: true }) // eslint-disable-line
+    cy.get(this.STATE).type([personalInformation.state, '{enter}'].join(''))
+    cy.get(this.CITY).type([personalInformation.city, '{enter}'].join(''))
+    cy.get(this.SUBMIT).click()
   }
 
   public verifySuccesfulForm (personalInformation: any): void {
     cy.get(this.SUCCESSFUL_MODAL).should('have.text', personalInformation.successful_message)
     this.validateEachLabel(personalInformation.studentNameLabel,
-      personalInformation.name + ' ' + personalInformation.lastName) // eslint-disable-line
+      [personalInformation.name, ' ', personalInformation.lastName].join(''))
 
     this.validateEachLabel(personalInformation.studentEmailLabel, personalInformation.email)
     this.validateEachLabel(personalInformation.genderLabel, personalInformation.gender)
     this.validateEachLabel(personalInformation.mobileLabel, personalInformation.mobileNumber)
     this.validateEachLabel(personalInformation.subjectsLabel, personalInformation.subjects)
     this.validateEachLabel(personalInformation.hobbiesLabel,
-      personalInformation.hobbies[0] + ', ' + personalInformation.hobbies[1]) // eslint-disable-line
+      [personalInformation.hobbies[0], ', ', personalInformation.hobbies[1]].join(''))
 
     this.validateEachLabel(personalInformation.addressLabel, personalInformation.currentAddress)
     this.validateEachLabel(personalInformation.stateAndCityLabel,
-      personalInformation.state + ' ' + personalInformation.city) // eslint-disable-line
+      [personalInformation.state, ' ', personalInformation.city].join(''))
   }
 
   private validateEachLabel (label: any, text: any): void {
