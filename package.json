@@ -11,7 +11,7 @@
     "pretest": "rm cypress/results/*",
     "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
     "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports",
-    "posttest":"npm run combine:reports && npm run generate:reports"
+    "posttest": "npm run combine:reports && npm run generate:reports"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "cypress-file-upload": "^5.0.8",
     "cypress-mochawesome-reporter": "^3.3.0",
     "cypress-multi-reporters": "^1.6.3",
     "eslint": "^8.35.0",

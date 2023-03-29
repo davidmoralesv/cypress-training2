@@ -1,4 +1,4 @@
-import { type personalData } from './index'
+import { type personalData } from '../interfacesEImplementation/index'
 
 class PracticeFormPage {
   private readonly FIRST_NAME = '#firstName'
