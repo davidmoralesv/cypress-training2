@@ -1,4 +1,5 @@
-import { PracticeFormPage, personalData } from './pages/index'
+import { personalData } from './interfacesEImplementation/index'
+import { PracticeFormPage } from './pages'
 
 const practiceFormPage = new PracticeFormPage()
 
