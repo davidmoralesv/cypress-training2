@@ -3,7 +3,7 @@ import { DownloadPage } from './pages/index'
 const downloadPage = new DownloadPage()
 const FIXTURE_PATH = 'cypress/downloads/sampleFile.jpeg'
 
-describe('Download and verify', () => {
+describe('Download and Verify File', () => {
   before(() => {
     cy.viewport(1920, 1080)
   })
