@@ -205,3 +205,4 @@ $RECYCLE.BIN/
 .idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,windows,cypressio
+cypress/downloads/sampleFile.jpeg
