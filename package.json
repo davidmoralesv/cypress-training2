@@ -8,7 +8,7 @@
     "test": "cypress run --headless --browser chrome",
     "lint": "eslint ./cypress/e2e/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
-    "pretest": "rm cypress/results/*",
+    "pretest": "rm cypress/reports/mocha/*",
     "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
     "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports",
     "posttest": "npm run combine:reports && npm run generate:reports"
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "cypress-file-upload": "^5.0.8",
+    "cypress-iframe": "^1.0.1",
     "cypress-mochawesome-reporter": "^3.3.0",
     "cypress-multi-reporters": "^1.6.3",
     "eslint": "^8.35.0",
