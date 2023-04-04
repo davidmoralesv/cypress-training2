@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 import 'cypress-file-upload'
+import 'cypress-iframe'
 Cypress.on("uncaught:exception", (err, runnable) => {
     // returning false here prevents Cypress from
     // failing the test

@@ -1,24 +1,23 @@
+import 'cypress-iframe'
+
 class IframePage {
+  private readonly iframeName = 'iframe[src=\'default.asp\']'
+  private readonly time = 500
   public visitIframePage (): void {
     cy.visit('https://www.w3schools.com/html/html_iframe.asp')
-  }
-
-  public getIFrameTitle (section: string): Cypress.Chainable {
-    return this.getIframe(section).find('title').then(cy.wrap)
-  }
-
-  public validateFrameTitle (titleText: string): void {
-    cy.wait(1000) // eslint-disable-line
-    this.getIFrameTitle('head').should('have.text', titleText)
+    cy.iframe(this.iframeName).as('iframeDefault')
   }
 
   public goToCssPageInFrame (cssTutorial: string): void {
-    this.getIframe('body').find(`a[title='${cssTutorial}']`).click()
+    cy.frameLoaded(this.iframeName)
+      .iframe(this.iframeName)
+      .find(`a[title='${cssTutorial}']`)
+      .should('be.visible')
+      .click()
   }
 
-  private getIframe (section: string): Cypress.Chainable {
-    return cy.get('iframe[src=\'default.asp\']').its(`0.contentDocument.${section}`)
-      .should('not.be.empty').then(cy.wrap)
+  public validateIFrameTitle (title: string): void {
+    cy.wait(this.time).iframe(this.iframeName).find('h1').should('have.text', title)
   }
 }
 
