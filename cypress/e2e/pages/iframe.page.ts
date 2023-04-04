@@ -3,10 +3,10 @@ import 'cypress-iframe'
 class IframePage {
   private readonly iframeName = 'iframe[src=\'default.asp\']'
   private readonly iFrameUrl = 'https://www.w3schools.com/css/'
-  private readonly time = 500
+  private readonly urlPage = 'https://www.w3schools.com/html/html_iframe.asp'
+
   public visitIframePage (): void {
-    cy.visit('https://www.w3schools.com/html/html_iframe.asp')
-    cy.iframe(this.iframeName).as('iframeDefault')
+    cy.visit(this.urlPage)
   }
 
   public goToCssPageInFrame (cssTutorial: string): void {
